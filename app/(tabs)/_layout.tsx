@@ -1,45 +1,68 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import FloatingTabButton from "@/components/ui/customTabButton";
+import { Colors } from "@/constants/Colors";
+import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import React from "react";
+import { RFValue } from "react-native-responsive-fontsize";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: {
+          position: "absolute",
+          left: 20,
+          right: 20,
+          backgroundColor: "#fff",
+          height: 70,
+          elevation: 5,
+          zIndex: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: RFValue(12),
+          fontWeight: "700",
+        },
+
+        tabBarActiveTintColor: Colors.Primary,
+        tabBarInactiveTintColor: Colors.Grey,
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="Laundry"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? "shirt-sharp" : "shirt-outline"}
+              size={size}
+              color={color}
+            />
+          ),
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="Temp"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          popToTopOnBlur: true,
+          tabBarButton: (props) => <FloatingTabButton onPress={() => {}} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="Booking"
+        options={{
+          tabBarIcon: ({ color, size, focused }) => (
+            <FontAwesome6 name="clock-rotate-left" size={size} color={color} />
+          ),
+          tabBarItemStyle: {
+            width: "30%",
+          },
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabLayout;
