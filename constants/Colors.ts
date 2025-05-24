@@ -9,4 +9,5 @@ export const Colors = {
   Red: "#DC4C64",
   White: "#ffffff",
   Grey: "rgba(0,0,0,0.5)",
+  BG: "#F3F4F8",
 };

@@ -24,7 +24,7 @@ const TabLayout = () => {
           fontSize: RFValue(12),
           fontWeight: "700",
         },
-
+        
         tabBarActiveTintColor: Colors.Primary,
         tabBarInactiveTintColor: Colors.Grey,
       }}

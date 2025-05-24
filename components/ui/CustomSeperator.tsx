@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { FC } from "react";
-import { RFValue } from "react-native-responsive-fontsize";
 import { Colors } from "@/constants/Colors";
 import { hairLineWidth } from "@/constants/Scaling";
+import React, { FC } from "react";
+import { StyleSheet, Text, TextStyle, View } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
-const CustomSeparator: FC<{ title: string }> = ({ title = "or" }) => {
+const CustomSeparator: FC<{ title: string; titleStyle?: TextStyle }> = ({
+  title = "or",
+  titleStyle,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.line}></View>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={[styles.text, titleStyle]}>{title}</Text>
       <View style={styles.line}></View>
     </View>
   );

@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { hp } from "@/constants/Scaling";
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, {
@@ -30,6 +31,7 @@ const MainScreen = () => {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={Colors.Primary} />
       <Text style={styles.text}>Bharat Laundry</Text>
 
       {/* Footer */}

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
-import CustomModel from "../ui/CustomModel";
-import { RFValue } from "react-native-responsive-fontsize";
-import CustomButton from "../ui/CustomButton";
 import { Colors } from "@/constants/Colors";
 import { hp } from "@/constants/Scaling";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import CustomButton from "../ui/CustomButton";
+import CustomModel from "../ui/CustomModel";
 
 const Languages = [
   {
@@ -38,6 +38,7 @@ const LanguageModel: FC<{
   return (
     <CustomModel
       showModel={showModel}
+      modelBackgroundColor={Colors.BackGround}
       setShowModel={setShowModel}
       containerHeight={0.65}
       children={
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     marginTop: RFValue(10),
   },
   langBox: {
-    backgroundColor: Colors.BackGround,
+    backgroundColor: Colors.White,
     padding: RFValue(8),
     marginVertical: RFValue(10),
     flexDirection: "row",

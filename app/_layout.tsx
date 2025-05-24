@@ -1,15 +1,15 @@
+import { Colors } from "@/constants/Colors";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { Colors } from "@/constants/Colors";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   // loading the fonts
   const [loaded] = useFonts({
-    Urbanist: require("@/assets/fonts/Urbanist.ttf"),
+    Inter: require("@/assets/fonts/Inter.ttf"),
   });
 
   // checking for font load
@@ -31,7 +31,7 @@ export default function RootLayout() {
         headerShown: false,
         animation: "ios_from_right",
         statusBarAnimation: "slide",
-        statusBarBackgroundColor: Colors.Primary,
+        statusBarStyle: "dark",
       }}
     >
       <Stack.Screen
@@ -41,6 +41,11 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen name="(auth)" />
+      <Stack.Screen
+        name="(tabs)"
+        options={{ statusBarBackgroundColor: Colors.Ascent1 }}
+      />
+      <Stack.Screen name="(screens)" />
     </Stack>
   );
 }
